@@ -22,8 +22,7 @@
   margin-top:16px;
 }
 .list--item {
-  min-width: 280px;
-  /* height: 32px; */
+  width: 280px;
   border-radius: 10px;
   background: white;
   color: black;
@@ -32,28 +31,34 @@
   text-align:left;
   padding: 10px;
   position: relative;
+  word-wrap: break-word;
+  /* display: flex; */
+}
+.list--item--button {
+  display: flex;
+  float: right;
 }
 .list--item:hover .list--item--delete,
 .list--item:hover .list--item--edit {
   display: inline-block;
+  line-height: 32px;
 }
 .list--item--delete {
   color: red;
   display: none;
   position: relative;
   font-weight: bold;
-  float:right;
-  right: 8px;
+
   cursor: pointer;
   font-size:x-large;
 }
 .list--item--edit {
   display: none;
+  right: 8px;
   position: relative;
+  font-size: x-small;
   font-weight: bold;
-  float: right;
   cursor: pointer;
-  font-size: small;
 }
 .list--item--edit--form {
   position: relative;

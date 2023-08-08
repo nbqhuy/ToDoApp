@@ -5,9 +5,20 @@ import ToDoItem from './components/ToDoItem'
 function App() {
   const [toDoArray,setToDoArray] = useState([])
 
-  
+  const handleSubmit = event => {
+    event.preventDefault();
+  }
+
   function addToDoThings() {
-    const toDoThing = document.getElementById("text").value
+    let toDoThing = document.getElementById("text--input").value.trim()
+    document.getElementById("text--input").value = ""
+    if (toDoThing.length === 0) {
+      alert("Input cannot be empty.");
+      return;
+    } else if (toDoThing.length > 1000) {
+      alert("Input cannot exceed 1000 characters.");
+      return;
+    }
     if(toDoThing)
       setToDoArray([{id:toDoArray.length?toDoArray[0].id+1:1,thing: toDoThing},...toDoArray])
       
@@ -36,10 +47,10 @@ function App() {
   return (
     <>
       <h1>To Do List</h1>
-      <div className='form'>
-        <input id='text' className='form--text' type='text' placeholder='Add to-do things'></input>
-        <button className='form--button' onClick={addToDoThings}>Add</button>
-      </div>
+      <form className='form'  onSubmit={handleSubmit}>
+        <input id='text--input' className='form--text' type='text' placeholder='Add to-do things'></input>
+        <button type='submit' className='form--button' onClick={addToDoThings}>Add</button>
+      </form>
       <div className='list'>
           {toDoList}
       </div>
